@@ -8,4 +8,5 @@ A Discord Bot programmed by [Me](https://github.com/Lauchschwert) and [@anditv21
 - Command which sends my Youtube - Channel
 - Command which clears a specified amount of messages
 - Command which allows you to download YouTube videos
+- Miesmuschel Command
 # More coming soon!
