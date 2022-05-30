@@ -35,7 +35,7 @@ def main():
         @client.event
         async def on_command_error(ctx, error):
                 embed = discord.Embed(title=":x: Command Error",
-                                    colour=0x992D22)  # Dark Red
+                colour=0x992D22)  # Dark Red
                 embed.add_field(name="Error", value=error)
                 embed.add_field(name="Guild", value=ctx.guild)
                 embed.add_field(name="Channel", value=ctx.channel)
