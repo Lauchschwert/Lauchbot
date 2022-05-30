@@ -23,6 +23,7 @@ class miesmuschel(commands.Cog):
             "Why do you need to ask?",
             "Go away. I do not wish to answer at this time.",
             "Time will only tell",
+            
                 ]
         await ctx.send(random.choice(answers))
 
