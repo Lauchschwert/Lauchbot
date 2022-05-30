@@ -18,7 +18,6 @@ class download(commands.Cog):
         
 
     @commands.command(name='download')
-    @commands.guild_only()
     async def download(self, ctx, url):
         vgm_url = 'https://8downloader.com/download?v=' + url
         html_text = pip._vendor.requests.get(vgm_url).text
