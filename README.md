@@ -6,3 +6,4 @@ A Discord Bot programmed by [Me](https://github.com/Lauchschwert) and [@anditv21
 - Command wich sends and anditv's github
 - Command wich sends my Twitch - Channel
 - Command wich sends my Youtube - Channel
+- Command wich clears a specified amount of messages
