@@ -12,6 +12,7 @@
    <li>Added Miesmuschel command</li>
    <li>Added help command which shows all commands</li>
    <li>Added reverse command which reverses a string</li>
+   <li>Added command for my website</li>
 </ul>
 <h1>More coming soon!</h1>
 
