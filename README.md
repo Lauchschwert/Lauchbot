@@ -10,4 +10,5 @@ A Discord Bot programmed by [Me](https://github.com/Lauchschwert) and [@anditv21
 - Added commandwhich allows you to download YouTube videos
 - Added Miesmuschel command
 - Added help command which shows all commands
+- Added reverse command which reverses a string
 # More coming soon!
