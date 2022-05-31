@@ -7,7 +7,6 @@ from discord.ext.commands import has_permissions
 from discord.utils import get
 from discord.ext import commands
 
-
 def main():
         activity = discord.Activity(
         type=discord.ActivityType.watching, name="Jojo's bizarre adventure")
@@ -15,8 +14,6 @@ def main():
             command_prefix=commands.when_mentioned_or(">>>"),
             activity=activity,
             status=discord.Status.dnd,)
-
-
 
         client.remove_command("help")
         

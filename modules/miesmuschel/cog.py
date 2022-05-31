@@ -33,7 +33,8 @@ class miesmuschel(commands.Cog):
             "maybe",
             "possibly", 
             "Maybe one day",
-            "I don't think so",  
+            "I don't think so", 
+            "I dont care", 
                 ]
         await ctx.send(random.choice(answers))
 
