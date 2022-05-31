@@ -14,16 +14,26 @@ class miesmuschel(commands.Cog):
         
 
     @commands.command(name='miesmuschel')
-    @commands.guild_only()
-    async def miesmuschel(self, ctx: discord.Member):
+    async def miesmuschel(self, ctx, question):
         answers = [
             "Yes",
+            "yep", 
+            "yea",
+            "yup"
             "No",
+            "of course not",
+            "negative",
+            "never",
             "Ask me again",
             "Why do you need to ask?",
             "Go away. I do not wish to answer at this time.",
             "Time will only tell",
-            
+            "Maybe in an hour",
+            "perhaps",
+            "maybe",
+            "possibly", 
+            "Maybe one day",
+            "I don't think so",  
                 ]
         await ctx.send(random.choice(answers))
 
