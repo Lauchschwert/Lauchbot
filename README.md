@@ -31,7 +31,7 @@
    <li>Enter your 2FA Code if you have to.</li>
    <li>Copy and paste your Token into token.txt</li>
    <br>
-   <img src="https://i.ibb.co/5xwwYBp/image-2022-05-31-165805342.png">
+   <img src="https://i.ibb.co/yf9Qncv/image-2022-05-31-172313605.png">
   <li>Open CMD (Command Prompt) and cd to your Bot directory</li>
   <br>
   <img src="https://i.ibb.co/x2GMCMY/image-2022-05-31-171506522.png">
