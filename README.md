@@ -20,9 +20,9 @@
    <li>Create a file named token.txt in the same directory as the main.py file</li>
    <li>Go to <a href="https://discord.com/developers/applications">https://discord.com/developers/applications</a></li>
    <li>Click "New Application"</li>
-   <li>Clck "Bot" in the navigation bar</li>
-   <li>Clck "Add bot"</li>
-   <li>Clck "Yes, do it!"</li>
+   <li>Click "Bot" in the navigation bar</li>
+   <li>Click "Add bot"</li>
+   <li>Click "Yes, do it!"</li>
    <br>
    <img src="https://i.ibb.co/27mLWRJ/image-2022-05-31-164248276.png">
    <br>
