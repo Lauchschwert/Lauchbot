@@ -1,5 +1,16 @@
 # Lauchbot
 A Discord Bot programmed by [Me](https://github.com/Lauchschwert) and [@anditv21](https://github.com/anditv21)
+## Install
+
+```sh
+pip install -r requirements.txt
+```
+
+## Start command
+
+```sh
+python main.py
+```
 ## <b>_Commands_</b>
 - Added command which embeds your Avatar into a message and sends it into the channel
 - Added command which nukes a discord Channel
