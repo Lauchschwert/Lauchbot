@@ -4,11 +4,11 @@
 <ul>
    <li>Added command which embeds your Avatar into a message and sends it into the channel</li>
    <li>Added command which nukes a discord Channel</li>
-   <li>Added commandwhich sends mine and anditv's github</li>
-   <li>Added commandwhich sends my Twitch - Channel</li>
-   <li>Added commandwhich sends my Youtube - Channel</li>
-   <li>Added commandwhich clears a specified amount of messages</li>
-   <li>Added commandwhich allows you to download YouTube videos</li>
+   <li>Added command which sends mine and anditv's github</li>
+   <li>Added command which sends my Twitch - Channel</li>
+   <li>Added command which sends my Youtube - Channel</li>
+   <li>Added command which clears a specified amount of messages</li>
+   <li>Added command which allows you to download YouTube videos</li>
    <li>Added Miesmuschel command</li>
    <li>Added help command which shows all commands</li>
    <li>Added reverse command which reverses a string</li>
