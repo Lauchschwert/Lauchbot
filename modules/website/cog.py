@@ -16,8 +16,8 @@ class website(commands.Cog):
     @commands.command(name='website')
     @commands.guild_only()
     async def website(self, ctx):
-            await ctx.send("https://www.lauchschwert.xyz")
-
+            await ctx.send("My Website => https://www.lauchschwert.xyz")
+            await ctx.send("Anditv's Website => https://gamekiller.at")
 
 
 
