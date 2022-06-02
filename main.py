@@ -11,9 +11,9 @@ def main():
         activity = discord.Activity(
         type=discord.ActivityType.watching, name="Jojo's bizarre adventure")
         client = commands.Bot(
-            command_prefix=commands.when_mentioned_or(">>>"),
-            activity=activity,
-            status=discord.Status.dnd,)
+        command_prefix=commands.when_mentioned_or(">>>"),
+        activity=activity,
+        status=discord.Status.dnd,)
 
         client.remove_command("help")
         

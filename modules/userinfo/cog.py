@@ -7,7 +7,6 @@ from discord.ext.tasks import loop
 from discord_slash import cog_ext
 import datetime
 import asyncio
-from bs4 import BeautifulSoup
 import urllib
 import pip._vendor.requests
 

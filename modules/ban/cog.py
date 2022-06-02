@@ -20,8 +20,8 @@ class ban(commands.Cog):
             if reason == None:
                 reason = "no reason provided"
             message = f"You have been banned from {ctx.guild.name} for {reason}"
-            await ctx.guild.ban(member, reason=reason)
             await member.send(message)
+            await ctx.guild.ban(member, reason=reason)
             await ctx.channel.send("Ban 🔨 has spoken")
             await ctx.channel.send(f"{member} is now banned!")
 
