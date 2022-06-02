@@ -2,6 +2,8 @@
 <p>A Discord Bot programmed by <a href="https://github.com/Lauchschwert">Me</a> and <a href="https://github.com/anditv21">@anditv21</a></p>
 <h2><b><em>Commands</em></b></h2>
 <ul>
+   <li>Kick command</li>
+   <li>Ban command</li>
    <li>Added command which embeds your Avatar into a message and sends it into the channel</li>
    <li>Added command which nukes a discord Channel</li>
    <li>Added command which sends mine and anditv's github</li>
