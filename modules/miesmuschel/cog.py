@@ -34,7 +34,12 @@ class miesmuschel(commands.Cog):
             "possibly", 
             "Maybe one day",
             "I don't think so", 
-            "I dont care", 
+            "I dont care",
+            "If it makes you happpier... Yes.",
+            "I dont think so.",
+            "How about...... No!",
+            "How about...... Yes!",
+            "Dont ask me that...",
                 ]
         await ctx.send(random.choice(answers))
 
