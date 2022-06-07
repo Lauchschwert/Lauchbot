@@ -14,7 +14,7 @@ class factde(commands.Cog):
 
     @commands.command(name='factde')
     async def factde(self, ctx):
-        url = "https://uselessfactdes.jsph.pl/random.json?language=de"
+        url = "https://uselessfacts.jsph.pl/random.json?language=de"
         response = requests.get(url)
         value = response.json()["text"]
         await ctx.send("Hier ist eine zufälliger und nutzloser Fakt: " + value)
