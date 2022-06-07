@@ -2,21 +2,22 @@
 <p>A Discord Bot programmed by <a href="https://github.com/Lauchschwert">Me</a> and <a href="https://github.com/anditv21">@anditv21</a></p>
 <h2><b><em>Commands</em></b></h2>
 <ul>
-   <li>Kick command</li>
-   <li>Ban command</li>
-   <li>Added command which embeds your Avatar into a message and sends it into the channel</li>
+   <li>Added avatar command which shows the avatar of a mentioned user</li>
    <li>Added command which nukes a discord Channel</li>
    <li>Added command which sends mine and anditv's github</li>
    <li>Added command which sends my Twitch - Channel</li>
    <li>Added command which sends my Youtube - Channel</li>
-   <li>Added command which clears a specified amount of messages</li>
-   <li>Added command which allows you to download YouTube videos</li>
-   <li>Added Miesmuschel command</li>
+  <li>Added command for my website</li>
    <li>Added help command which shows all commands</li>
+   <li>Added clear command which deletes a specified amount of messages</li>
+   <li>Added download command which allows you to download YouTube videos</li>
+   <li>Added Miesmuschel command</li>
    <li>Added reverse command which reverses a string</li>
-   <li>Added command for my website</li>
-   <li>Added user info which displays informations about a user</li>
-   <li>RPC command which changes the bots activity</li>
+   <li>Added userinfo command which displays informations about a user</li>
+   <li>Added fact command which gives you a random useless fact</li>
+   <li>Added RPC command which changes the bots activity</li>
+   <li>Added Kick command</li>
+   <li>Added Ban command</li>
 </ul>
 <h1>More coming soon!</h1>
 
