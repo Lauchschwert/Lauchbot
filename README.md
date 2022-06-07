@@ -15,6 +15,7 @@
    <li>Added reverse command which reverses a string</li>
    <li>Added userinfo command which displays informations about a user</li>
    <li>Added fact command which gives you a random useless fact</li>
+   <li>Added fact command which gives you a random useless fact BUT in the german language</li>
    <li>Added RPC command which changes the bots activity</li>
    <li>Added Kick command</li>
    <li>Added Ban command</li>
