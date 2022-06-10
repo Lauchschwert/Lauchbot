@@ -8,16 +8,14 @@ import asyncio
 import urllib
 
 
-
 class hello(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='hello')
     async def hello(self, ctx):
         await ctx.reply(f"Hello {ctx.message.author.mention}")
 
-        
+
 def setup(bot):
     bot.add_cog(hello(bot))

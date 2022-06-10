@@ -8,16 +8,16 @@ from discord_slash import cog_ext
 import datetime
 import random
 
+
 class miesmuschel(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='miesmuschel')
     async def miesmuschel(self, ctx, question):
         answers = [
             "Yes",
-            "yep", 
+            "yep",
             "yea",
             "yup"
             "No",
@@ -31,23 +31,18 @@ class miesmuschel(commands.Cog):
             "Maybe in an hour",
             "perhaps",
             "maybe",
-            "possibly", 
+            "possibly",
             "Maybe one day",
-            "I don't think so", 
+            "I don't think so",
             "I dont care",
             "If it makes you happpier... Yes.",
             "I dont think so.",
             "How about...... No!",
             "How about...... Yes!",
             "Dont ask me that...",
-                ]
+        ]
         await ctx.send(random.choice(answers))
-
-
 
 
 def setup(bot):
     bot.add_cog(miesmuschel(bot))
-
-
-         

@@ -9,11 +9,9 @@ import urllib
 import requests
 
 
-
 class bitcoin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='bitcoin')
     async def bitcoin(self, ctx):
@@ -22,6 +20,6 @@ class bitcoin(commands.Cog):
         value = response.json()["bpi"]["USD"]["rate"]
         await ctx.send("Current Bitcoin Price is: $" + value)
 
-        
+
 def setup(bot):
     bot.add_cog(bitcoin(bot))

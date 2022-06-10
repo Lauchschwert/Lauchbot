@@ -11,14 +11,12 @@ import datetime
 class website(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='website')
     @commands.guild_only()
     async def website(self, ctx):
-            await ctx.send("My Website => https://www.lauchschwert.xyz")
-            await ctx.send("Anditv's Website => https://gamekiller.at")
-
+        await ctx.send("My Website => https://www.lauchschwert.xyz")
+        await ctx.send("Anditv's Website => https://gamekiller.at")
 
 
 def setup(bot):

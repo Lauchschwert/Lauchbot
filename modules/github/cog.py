@@ -11,19 +11,13 @@ import datetime
 class github(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='github')
     @commands.guild_only()
     async def github(self, ctx: discord.Member):
-            await ctx.send("https://www.github.com/Lauchschwert")
-            await ctx.send("https://www.github.com/anditv21")
-
-
+        await ctx.send("https://www.github.com/Lauchschwert")
+        await ctx.send("https://www.github.com/anditv21")
 
 
 def setup(bot):
     bot.add_cog(github(bot))
-
-
-         

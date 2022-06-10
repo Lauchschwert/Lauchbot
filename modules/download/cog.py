@@ -15,7 +15,6 @@ import pip._vendor.requests
 class download(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='download')
     async def download(self, ctx, url):
@@ -30,12 +29,6 @@ class download(commands.Cog):
         with urlopen(link) as webpage:
             f = webpage.read().decode()
         await ctx.send(f"Download Link to your Youtube Video (limited time only): {f}")
-        
-        
-        
-         
-
-
 
 
 def setup(bot):

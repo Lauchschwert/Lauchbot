@@ -8,22 +8,13 @@ import asyncio
 import urllib
 
 
-
 class reverse(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='reverse')
     async def reverse(self, ctx, text):
         await ctx.send(text[::-1])
-
-        
-        
-        
-         
-
-
 
 
 def setup(bot):

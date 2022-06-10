@@ -11,18 +11,12 @@ import datetime
 class youtube(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='youtube')
     @commands.guild_only()
     async def youtube(self, ctx: discord.Member):
-            await ctx.send("https://www.youtube.com/channel/UCn71e_JrhNVYbvETHl4MNJw")
-
-
+        await ctx.send("https://www.youtube.com/channel/UCn71e_JrhNVYbvETHl4MNJw")
 
 
 def setup(bot):
     bot.add_cog(youtube(bot))
-
-
-         

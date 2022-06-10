@@ -9,6 +9,7 @@ from discord_slash import cog_ext
 from discord import Member
 from discord.ext.commands import has_permissions, MissingPermissions
 
+
 class admin_help(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
@@ -17,13 +18,12 @@ class admin_help(commands.Cog):
     @commands.guild_only()
     @has_permissions(administrator=True)
     async def admin_help(self, ctx):
-            embed = discord.Embed(description="Here are the commands!", color=0x00efdb)
-            embed.set_image(url="https://i.imgur.com/ZnZmLfc.png")
-            await ctx.reply(embed=embed, mention_author=True)
-            await asyncio.sleep(1000)
+        embed = discord.Embed(
+            description="Here are the commands!", color=0x00efdb)
+        embed.set_image(url="https://i.imgur.com/ZnZmLfc.png")
+        await ctx.reply(embed=embed, mention_author=True)
+        await asyncio.sleep(1000)
+
 
 def setup(bot):
     bot.add_cog(admin_help(bot))
-
-
-         

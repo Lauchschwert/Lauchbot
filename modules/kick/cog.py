@@ -13,22 +13,20 @@ from discord.ext.commands import has_permissions, MissingPermissions
 class kick(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='kick')
     @has_permissions(manage_roles=True, kick_members=True)
-    async def kick(self, ctx, member:discord.User=None, reason=None):
-            if member == None or member == ctx.message.author:
-                await ctx.channel.send("You cannot kick yourself")
-                return
-            if reason == None:
-                reason = "no reason provided"
-            message = f"You have been kicked from {ctx.guild.name} for {reason}"
-            await member.send(message)
-            await ctx.guild.kick(member)
-            await ctx.channel.send(f"{member} has been kicked!")
+    async def kick(self, ctx, member: discord.User = None, reason=None):
+        if member == None or member == ctx.message.author:
+            await ctx.channel.send("You cannot kick yourself")
+            return
+        if reason == None:
+            reason = "no reason provided"
+        message = f"You have been kicked from {ctx.guild.name} for {reason}"
+        await member.send(message)
+        await ctx.guild.kick(member)
+        await ctx.channel.send(f"{member} has been kicked!")
 
 
-        
 def setup(bot):
     bot.add_cog(kick(bot))

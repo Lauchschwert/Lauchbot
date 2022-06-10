@@ -6,11 +6,9 @@ from discord_slash import cog_ext
 import requests
 
 
-
 class fact(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='fact')
     async def fact(self, ctx):
@@ -19,6 +17,6 @@ class fact(commands.Cog):
         value = response.json()["text"]
         await ctx.send("Here is a random and useless fact: " + value)
 
-        
+
 def setup(bot):
     bot.add_cog(fact(bot))

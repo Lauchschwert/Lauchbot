@@ -11,16 +11,13 @@ import datetime
 class avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='avatar')
     @commands.guild_only()
     async def avatar(self, ctx, member: discord.Member):
-            embed = discord.Embed(description="Here is the avatar", color=0x00efdb)
-            embed.set_image(url=member.avatar_url)
-            await ctx.reply(embed=embed, mention_author=False)
-
-
+        embed = discord.Embed(description="Here is the avatar", color=0x00efdb)
+        embed.set_image(url=member.avatar_url)
+        await ctx.reply(embed=embed, mention_author=False)
 
 
 def setup(bot):

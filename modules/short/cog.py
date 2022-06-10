@@ -15,7 +15,6 @@ import pip._vendor.requests
 class short(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='short')
     async def short(self, ctx, url):
@@ -24,12 +23,6 @@ class short(commands.Cog):
         with urlopen(link) as webpage:
             f = webpage.read().decode()
         await ctx.send(f"Your short-link is: {f}")
-        
-        
-        
-         
-
-
 
 
 def setup(bot):

@@ -11,18 +11,12 @@ import datetime
 class twitch(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='twitch')
     @commands.guild_only()
     async def twitch(self, ctx: discord.Member):
-            await ctx.send("https://www.twitch.tv/TTV_Lauchschwert")
-
-
+        await ctx.send("https://www.twitch.tv/TTV_Lauchschwert")
 
 
 def setup(bot):
     bot.add_cog(twitch(bot))
-
-
-         

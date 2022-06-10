@@ -12,7 +12,6 @@ import asyncio
 class clear(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='clear')
     @commands.guild_only()
@@ -20,8 +19,6 @@ class clear(commands.Cog):
         await ctx.send("Deleted " + str(limit) + "(maximum) messages")
         asyncio.sleep(3000)
         await ctx.channel.purge(limit=limit+2)
-
-
 
 
 def setup(bot):

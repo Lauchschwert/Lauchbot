@@ -11,7 +11,6 @@ import datetime
 class nuke(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
 
     @commands.command(name='nuke')
     @commands.guild_only()
@@ -20,7 +19,8 @@ class nuke(commands.Cog):
         try:
             if channel == None:
                 channel = ctx.channel
-            nuke_channel = discord.utils.get(ctx.guild.channels, name=channel.name)
+            nuke_channel = discord.utils.get(
+                ctx.guild.channels, name=channel.name)
 
             if nuke_channel is not None:
                 new_channel = await nuke_channel.clone(reason="Has been Nuked!")
@@ -28,13 +28,10 @@ class nuke(commands.Cog):
                 await new_channel.send("THIS CHANNEL HAS BEEN NUKED!")
                 await new_channel.send("https://tenor.com/view/xqc-spotify-mood-want-a-break-bruh-gif-24599734")
 
-
             else:
                 await ctx.send(f"No channel named {channel.name} was found!")
         except Exception as e:
             await ctx.reply(e)
-
-
 
 
 def setup(bot):
