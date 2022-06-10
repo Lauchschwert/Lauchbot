@@ -21,6 +21,12 @@ class miesmuschel(commands.Cog):
             "yea",
             "yup"
             "No",
+            'Positive',
+            'From my point of view, yes',
+            'From my point of view, no',
+            'Convinced.',
+            'Most Likley.',
+            'Chances High',
             "of course not",
             "negative",
             "never",
@@ -40,6 +46,11 @@ class miesmuschel(commands.Cog):
             "How about...... No!",
             "How about...... Yes!",
             "Dont ask me that...",
+            'Not Sure',
+            'Mayby',
+            'I cannot predict now.',
+            'Im to lazy to predict.',
+
         ]
         await ctx.send(random.choice(answers))
 
