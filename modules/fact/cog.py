@@ -4,6 +4,8 @@ from discord_slash.utils.manage_commands import create_choice, create_option
 from discord.ext.tasks import loop
 from discord_slash import cog_ext
 import requests
+import discord
+import datetime
 
 
 class fact(commands.Cog):
@@ -12,11 +14,20 @@ class fact(commands.Cog):
 
     @commands.command(name='fact')
     async def fact(self, ctx):
-        url = "https://uselessfacts.jsph.pl/random.json?language=en"
-        response = requests.get(url)
-        value = response.json()["text"]
-        await ctx.send("Here is a random and useless fact: " + value)
-
+        try:
+            url = "https://uselessfacts.jsph.pl/random.json?language=en"
+            response = requests.get(url)
+            value = response.json()["text"]
+            await ctx.send("Here is a random and useless fact: " + value)
+        except Exception as e:
+            embed = discord.Embed(title=":x: Command Error",
+            colour=0x992D22)  # Dark Red
+            embed.add_field(name="Error", value=e)
+            embed.add_field(name="Guild", value=ctx.guild)
+            embed.add_field(name="Channel", value=ctx.channel)
+            embed.add_field(name="User", value=ctx.author)
+            embed.timestamp = datetime.datetime.utcnow()
+            await ctx.reply(embed=embed)
 
 def setup(bot):
     bot.add_cog(fact(bot))

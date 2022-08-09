@@ -15,8 +15,17 @@ class twitch(commands.Cog):
     @commands.command(name='twitch')
     @commands.guild_only()
     async def twitch(self, ctx: discord.Member):
-        await ctx.send("https://www.twitch.tv/TTV_Lauchschwert")
+        try:
+            await ctx.send("https://www.twitch.tv/TTV_Lauchschwert")
 
-
+        except Exception as e:
+            embed = discord.Embed(title=":x: Command Error",
+            colour=0x992D22)  # Dark Red
+            embed.add_field(name="Error", value=e)
+            embed.add_field(name="Guild", value=ctx.guild)
+            embed.add_field(name="Channel", value=ctx.channel)
+            embed.add_field(name="User", value=ctx.author)
+            embed.timestamp = datetime.datetime.utcnow()
+            await ctx.reply(embed=embed)
 def setup(bot):
     bot.add_cog(twitch(bot))
