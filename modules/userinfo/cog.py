@@ -25,6 +25,7 @@ class userinfo(commands.Cog):
             embed.add_field(name="ID", value=user.id, inline=True)
             embed.add_field(name="Highest role", value=user.top_role)
             embed.add_field(name="Joined At", value=user.joined_at.strftime("%A, %B %d %Y @ %H:%M:%S %p"))
+            embed.add_field(name="Account created on", value=user.created_at.strftime("&A, %B &d %Y @ %H:%M:&S %p"))
             embed.set_thumbnail(url=user.avatar_url)
 
 
