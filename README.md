@@ -1,6 +1,8 @@
 <h1>Lauchbot</h1>
-<p>A Discord Bot programmed by <a href="https://github.com/Lauchschwert">Me</a> and <a href="https://github.com/anditv21">@anditv21</a></p>
-<h2><b><em>Commands</em></b></h2>
+<p align="center">A Discord Bot programmed by <a href="https://github.com/Lauchschwert">Me</a> and <a href="https://github.com/anditv21">@anditv21</a></p>
+<p align="center"><img src="https://cdn.discordapp.com/avatars/934460478510493788/4b86154cdc5f241fcf3f51f4da6abf87.webp?size=256"></p>
+<details>
+<summary>Commands</summary>
 <ul>
    <li>Added avatar command which shows the avatar of a mentioned user</li>
    <li>Added command which nukes a discord Channel</li>
@@ -21,8 +23,10 @@
    <li>Added Ban command</li>
 </ul>
 <h1>More coming soon!</h1>
+</details>
 
-<h2>Install (without an existing bot)</h2>
+<details>
+<summary>Setup</summary>
 <ol>
    <li>Create a file named token.txt in the same directory as the main.py file</li>
    <li>Go to <a href="https://discord.com/developers/applications">https://discord.com/developers/applications</a></li>
@@ -50,3 +54,4 @@
   <li>Run pip install -r requirements.txt</li>
   <li>Last but not least: Run python main.py
 </ol>
+</details>
