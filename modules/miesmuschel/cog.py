@@ -48,7 +48,7 @@ class miesmuschel(commands.Cog):
                 "How about...... Yes!",
                 "Dont ask me that...",
                 'Not Sure',
-                'Mayby',
+                'Maybe',
                 'I cannot predict now.',
                 'Im to lazy to predict.',
 
