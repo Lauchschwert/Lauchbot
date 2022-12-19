@@ -1,4 +1,4 @@
-<h1>Lauchbot</h1>
+<h1 align=center>Lauchbot</h1>
 <p align="center">A Discord Bot programmed by <a href="https://github.com/Lauchschwert">Me</a> and <a href="https://github.com/anditv21">@anditv21</a></p>
 <p align="center"><img src="https://cdn.discordapp.com/avatars/934460478510493788/4b86154cdc5f241fcf3f51f4da6abf87.webp?size=256"></p>
 <details>
