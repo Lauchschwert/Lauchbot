@@ -1,4 +1,5 @@
 import os
+import asyncio
 import discord
 import datetime
 from discord import guild
@@ -24,7 +25,7 @@ async def send_discord_message(message):
 
 def check_stream_status():
     url = f'https://api.twitch.tv/helix/streams?user_login=lauchschwert'
-    headers = {'Client-ID': 't6b4d5a942qvmgpw0t0cb3a3r8jc6g', 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
+    headers = {'Client-ID': f'Bearer t6b4d5a942qvmgpw0t0cb3a3r8jc6g', 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
     response = requests.get(url, headers=headers)
     data = json.loads(response.text)
     if data['data']:
@@ -35,6 +36,12 @@ def check_stream_status():
 async def send_live_notification():
     message = f'Lauchschwert just went live on Twitch! Watch the stream here: https://www.twitch.tv/lauchschwert'
     await send_discord_message(message)
+
+async def on_ready():
+    while True:
+        if check_stream_status():
+            await send_live_notification()
+        await asyncio.sleep(60)
 
 def main():
     client = commands.Bot(
