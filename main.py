@@ -24,7 +24,7 @@ async def send_discord_message(message):
 
 def check_stream_status():
     url = f'https://api.twitch.tv/helix/streams?user_login=lauchschwert'
-    headers = {'Client-ID': CLIENT_ID, 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
+    headers = {'Client-ID': 't6b4d5a942qvmgpw0t0cb3a3r8jc6g', 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
     response = requests.get(url, headers=headers)
     data = json.loads(response.text)
     if data['data']:
