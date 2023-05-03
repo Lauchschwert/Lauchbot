@@ -6,7 +6,35 @@ from discord.ext import commands
 from discord.ext.commands import has_permissions
 from discord.utils import get
 from discord.ext import commands
+import requests
+import json
 
+CLIENT_ID = 't6b4d5a942qvmgpw0t0cb3a3r8jc6g'
+AUTH_TOKEN = 'hbma7xqs6m75iq3qinu1anx9exg1cy'
+
+STREAMER_NAME = 'Lauchschwert'
+
+CHANNEL_ID = '863582397944692756'
+
+client = discord.Client()
+
+async def send_discord_message(message):
+    channel = client.get_channel(int(863582397944692756))
+    await channel.send(message)
+
+def check_stream_status():
+    url = f'https://api.twitch.tv/helix/streams?user_login=lauchschwert'
+    headers = {'Client-ID': CLIENT_ID, 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
+    response = requests.get(url, headers=headers)
+    data = json.loads(response.text)
+    if data['data']:
+        return True
+    else:
+        return False
+
+async def send_live_notification():
+    message = f'Lauchschwert just went live on Twitch! Watch the stream here: https://www.twitch.tv/lauchschwert'
+    await send_discord_message(message)
 
 def main():
     client = commands.Bot(
