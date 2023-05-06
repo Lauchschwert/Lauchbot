@@ -16,7 +16,7 @@ class twitch(commands.Cog):
     @commands.guild_only()
     async def twitch(self, ctx: discord.Member):
         try:
-            await ctx.send("https://www.twitch.tv/TTV_Lauchschwert")
+            await ctx.send("https://www.twitch.tv/Lauchschwert")
 
         except Exception as e:
             embed = discord.Embed(title=":x: Command Error",
