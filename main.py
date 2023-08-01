@@ -9,6 +9,7 @@ from discord.utils import get
 from discord.ext import commands
 import requests
 import json
+import sys
 
 CLIENT_ID = 't6b4d5a942qvmgpw0t0cb3a3r8jc6g'
 AUTH_TOKEN = 'hbma7xqs6m75iq3qinu1anx9exg1cy'
@@ -81,8 +82,14 @@ def main():
         if os.path.exists(os.path.join("modules", folder, "cog.py")):
             client.load_extension(f"modules.{folder}.cog")
 
-    file = open('token.txt').read()
-    client.run(file)
+    with open("config.json", "r", encoding="UTF-8") as configfile:
+        config = json.load(configfile)
+        token = config.get("token")
+        if not token:
+            print(f"[ERROR] Value for key 'token' is missing in config.json. Please check the configuration file and try again.")
+            sys.exit()
+    configfile.close()
+    client.run(token)
 
 
 if __name__ == '__main__':
