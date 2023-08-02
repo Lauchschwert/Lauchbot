@@ -14,6 +14,22 @@ class nuke(commands.Cog):
     @commands.guild_only()
     @commands.has_permissions(manage_messages=True)
     async def Nuke(self, interaction: discord.Interaction, channel: discord.TextChannel = None):
+        
+        bot_member = interaction.guild.get_member(self.bot.user.id)
+        if not bot_member.guild_permissions.manage_channels:
+            return await interaction.response.send_message("I do not have the permission to manage channels.", ephemeral=True)
+            
+        
+        if not interaction.user.guild_permissions.manage_channels:
+            embed = discord.Embed(
+                title="Permission Error",
+                description=f"{interaction.user.mention}, you don't have enough permissions to use this command.",
+                color=discord.Color.red()
+            ).set_footer(
+                text=f"Requested by {interaction.user.name}",
+                icon_url=interaction.user.avatar
+            )
+            return await interaction.response.send_message(embed=embed, ephemeral=True)
         if channel == None:
             channel = interaction.channel
         nuke_channel = discord.utils.get(
