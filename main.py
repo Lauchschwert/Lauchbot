@@ -11,27 +11,58 @@ intents = discord.Intents.default()
 intents.typing = False
 intents.presences = False
 
+
 def main():
-    bot = commands.Bot(
-        command_prefix=commands.when_mentioned_or(">>>"),
-        intents=intents
-    )
-    bot.remove_command("help")
+    bot = Bot(intents=intents)
+    asyncio.run(bot.setup_and_run())
 
-    @bot.event
-    async def on_ready():
-        print(f"{bot.user.name} has connected to Discord.")
+
+# Custom Bot class with setup_hook for loading modules
+class Bot(commands.Bot):
+    def __init__(self, *, intents: discord.Intents):
+        super().__init__(command_prefix=commands.when_mentioned_or(">>>"), intents=intents)
+
+    async def setup_hook(self):
+        loaded = 0
+        for filepath in os.listdir('modules'):
+            for filename in os.listdir(f'modules/{filepath}'):
+                if filename.endswith('.py'):
+                    filename = filename.replace('.py', '')
+                    try:
+                        await self.load_extension(f'modules.{filepath}.{filename}')
+                        print(f'Loaded modules.{filepath}.{filename}')
+                        loaded += 1
+                    except Exception as error:
+                        print(f'Failed to load modules.{filepath}.{filename}: {error}')
+        return loaded
+
+    async def setup_and_run(self):
+        loaded = await self.setup_hook()
+        if loaded == 0:
+            print("No extensions were loaded. Exiting.")
+            return
+
+        # Read token from config
+        with open("config.json", "r", encoding="UTF-8") as configfile:
+            config = json.load(configfile)
+            token = config.get("token")
+            if not token:
+                print("[ERROR] Value for key 'token' is missing in config.json. Please check the configuration file and try again.")
+                sys.exit()
+
+        await self.start(token)
+
+    async def on_ready(self):
+        print(f"{self.user.name} has connected to Discord.")
         activity = discord.Activity(type=discord.ActivityType.watching, name="Jojo's bizarre adventure")
-        await bot.change_presence(status=discord.Status.dnd, activity=activity)
+        await self.change_presence(status=discord.Status.dnd, activity=activity)
 
-    @bot.event
-    async def on_message(message):
+    async def on_message(self, message):
         if message.author.bot:
             return False
-        await bot.process_commands(message)
+        await self.process_commands(message)
 
-    @bot.event
-    async def on_command_error(ctx, error):
+    async def on_command_error(self, ctx, error):
         embed = discord.Embed(title=":x: Command Error", colour=0x992D22)  # Dark Red
         embed.add_field(name="Error", value=str(error))
         embed.add_field(name="Guild", value=ctx.guild.name)
@@ -46,35 +77,5 @@ def main():
         except:
             pass
 
-    # load all modules
-    class Bot(commands.Bot):
-        def __init__(self, *, intents: discord.Intents):
 
-            super().__init__(command_prefix=commands.when_mentioned_or("$$"), intents=intents)
-
-        async def setup_hook(self):
-            for filepath in os.listdir('modules'):
-                for filename in os.listdir(f'modules/{filepath}'):
-                    if filename.endswith('.py'):
-                        filename = filename.replace('.py', '')
-                        allmodules += 1
-                        try:
-                            await bot.load_extension(f'modules.{filepath}.{filename}')
-                            print(f'Loaded modules.{filepath}.{filename}')
-                            loaded += 1
-                        except Exception as error:
-                            print(f'Failed to load modules.{filepath}.{filename}: {error}')
-
-            await self.tree.sync()
-
-    with open("config.json", "r", encoding="UTF-8") as configfile:
-        config = json.load(configfile)
-        token = config.get("token")
-        if not token:
-            print("[ERROR] Value for key 'token' is missing in config.json. Please check the configuration file and try again.")
-            sys.exit()
-    
-    bot.run(token)
-
-if __name__ == '__main__':
-    main()
+main()
