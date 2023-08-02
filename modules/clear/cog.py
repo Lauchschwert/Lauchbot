@@ -1,8 +1,9 @@
-from discord.ext import commands
 import discord
-from discord.ext.tasks import loop
-import datetime
+from discord import app_commands
+from discord.ext import commands
+import requests
 import asyncio
+from asyncio import datetime
 
 
 class clear(commands.Cog):
@@ -11,20 +12,20 @@ class clear(commands.Cog):
 
     @commands.command(name='clear')
     @commands.guild_only()
-    async def clear(self, ctx, limit: int):
+    async def clear(self, interaction: discord.Interaction, limit: int):
         try:
-            await ctx.send("Deleted " + str(limit) + "(maximum) messages")
+            await interaction.send("Deleted " + str(limit) + "(maximum) messages")
             asyncio.sleep(3000)
-            await ctx.channel.purge(limit=limit+2)
+            await interaction.channel.purge(limit=limit+2)
         except Exception as e:
             embed = discord.Embed(title=":x: Command Error",
             colour=0x992D22)  # Dark Red
             embed.add_field(name="Error", value=e)
-            embed.add_field(name="Guild", value=ctx.guild)
-            embed.add_field(name="Channel", value=ctx.channel)
-            embed.add_field(name="User", value=ctx.author)
+            embed.add_field(name="Guild", value=interaction.guild)
+            embed.add_field(name="Channel", value=interaction.channel)
+            embed.add_field(name="User", value=interaction.author)
             embed.timestamp = datetime.datetime.utcnow()
-            await ctx.reply(embed=embed)         
+            await interaction.response.send_message(embed=embed)         
 
 
 def setup(bot):
