@@ -10,9 +10,28 @@ class ban(commands.Cog):
     @discord.app_commands.describe(member="The member you want to ban")
     @discord.app_commands.describe(reason="Why do you want to ban this member?")
     async def ban(self, interaction: discord.Interaction, user: discord.Member, *, reason: str = None):
-            if user == interaction.author:
-                await interaction.reply("You cannot ban yourself")
-                return
+            if not interaction.guild.me.guild_permissions.ban_members:
+                embed = discord.Embed(
+                    title="Permission Denied",
+                    color=0xff0000
+                ).add_field(
+                    name="Error",
+                    value="I do not have permission to ban members.",
+                    inline=True
+                )
+                return await interaction.response.send_message(embed=embed, ephemeral=True)
+
+            # Check if the user has the permission to ban members
+            if not interaction.user.guild_permissions.ban_members:
+                embed = discord.Embed(
+                    title="Permission Denied",
+                    color=0xff0000
+                ).add_field(
+                    name="Error",
+                    value="You do not have permission to use this command.",
+                    inline=True
+                )
+                return await interaction.response.send_message(embed=embed, ephemeral=True)
 
             if reason == None:
                 reason = "none"
