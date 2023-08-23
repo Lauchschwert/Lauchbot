@@ -1,96 +1,55 @@
-import os
 import asyncio
-import discord
-import datetime
-from discord import guild
-from discord.ext import commands
-from discord.ext.commands import has_permissions
-from discord.utils import get
-from discord.ext import commands
-import requests
-import json
+import os
+import platform
 import sys
+import json
+from datetime import datetime
+from urllib.parse import quote
 
-CLIENT_ID = 't6b4d5a942qvmgpw0t0cb3a3r8jc6g'
-AUTH_TOKEN = 'hbma7xqs6m75iq3qinu1anx9exg1cy'
+import discord
+from discord.ext import commands, tasks
 
-STREAMER_NAME = 'Lauchschwert'
+sys.dont_write_bytecode = True
 
-CHANNEL_ID = '863582397944692756'
 
-client = discord.Client()
+class Bot(commands.Bot):
+    def __init__(self, *, intents: discord.Intents):
+        super().__init__(command_prefix=commands.when_mentioned_or(">>>"), intents=intents)
 
-async def send_discord_message(message):
-    channel = client.get_channel(int(863582397944692756))
-    await channel.send(message)
+    async def setup_hook(self):
+        for filepath in os.listdir('modules'):
+            for filename in os.listdir(f'modules/{filepath}'):
+                if filename.endswith('.py'):
+                    filename = filename.replace('.py', '')
+                    try:
+                        await bot.load_extension(f'modules.{filepath}.{filename}')
+                        print(f'Loaded modules.{filepath}.{filename}')
+                    except Exception as error:
+                        print(f'Failed to load modules.{filepath}.{filename}: {error}')
 
-def check_stream_status():
-    url = f'https://api.twitch.tv/helix/streams?user_login=lauchschwert'
-    headers = {'Client-ID': f'Bearer t6b4d5a942qvmgpw0t0cb3a3r8jc6g', 'Authorization': f'Bearer hbma7xqs6m75iq3qinu1anx9exg1cy'}
-    response = requests.get(url, headers=headers)
-    data = json.loads(response.text)
-    if data['data']:
-        return True
-    else:
-        return False
+        await self.tree.sync()
 
-async def send_live_notification():
-    message = f'Lauchschwert just went live on Twitch! Watch the stream here: https://www.twitch.tv/lauchschwert'
-    await send_discord_message(message)
+intents = discord.Intents.all()
+intents.presences = True
+intents.members = True
 
+
+with open('config.json') as config_file:
+    config = json.load(config_file)
+    token = config.get('token')
+
+
+if not token:
+    print("Error: Bot token not found in config.json.")
+    sys.exit(1)
+
+bot = Bot(intents=intents)
+bot.remove_command("help")
+
+@bot.event
 async def on_ready():
-    while True:
-        if check_stream_status():
-            await send_live_notification()
-        await asyncio.sleep(60)
+    print(f"{bot.user.name} has connected to Discord.")
+    activity = discord.Activity(type=discord.ActivityType.watching, name="Jojo's bizarre adventure")
+    await bot.change_presence(status=discord.Status.dnd, activity=activity)
 
-def main():
-    client = commands.Bot(
-        command_prefix=commands.when_mentioned_or(">>>"),
-    )
-    client.remove_command("help")
-
-    @client.event
-    async def on_ready():
-        print(f"{client.user.name} has connected to Discord.")
-        await client.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.watching, name="Jojo's bizarre adventure"))
-
-    @client.event
-    async def on_message(message):
-        if message.author == client.user:
-            return
-
-        await client.process_commands(message)
-
-    @client.event
-    async def on_command_error(ctx, error):
-        embed = discord.Embed(title=":x: Command Error",
-                              colour=0x992D22)  # Dark Red
-        embed.add_field(name="Error", value=error)
-        embed.add_field(name="Guild", value=ctx.guild)
-        embed.add_field(name="Channel", value=ctx.channel)
-        embed.add_field(name="User", value=ctx.author)
-        embed.add_field(name="Message", value=ctx.message.clean_content)
-        embed.timestamp = datetime.datetime.utcnow()
-        try:
-            await ctx.reply(embed=embed)
-        except:
-            pass
-
-    # load all cogs
-    for folder in os.listdir("modules"):
-        if os.path.exists(os.path.join("modules", folder, "cog.py")):
-            client.load_extension(f"modules.{folder}.cog")
-
-    with open("config.json", "r", encoding="UTF-8") as configfile:
-        config = json.load(configfile)
-        token = config.get("token")
-        if not token:
-            print(f"[ERROR] Value for key 'token' is missing in config.json. Please check the configuration file and try again.")
-            sys.exit()
-    configfile.close()
-    client.run(token)
-
-
-if __name__ == '__main__':
-    main()
+bot.run(token=token, log_level=40)

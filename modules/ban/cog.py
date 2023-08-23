@@ -1,52 +1,53 @@
-from discord.ext import commands
 import discord
-from discord_slash import SlashCommand, SlashContext
-from discord_slash.utils.manage_commands import create_choice, create_option
-from discord.ext.tasks import loop
-import pip._vendor.requests
-from discord import Member
-from discord.ext.commands import has_permissions, MissingPermissions
-import datetime
-
+from discord import app_commands
+from discord.ext import commands
 
 class ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='ban')
-    @has_permissions(manage_roles=True, ban_members=True)
-    async def ban(self, ctx: SlashContext, user: discord.Member, *, reason="None"):
-        try:
+    @app_commands.command(name="ban", description="Ban someone")
+    @discord.app_commands.describe(member="The member you want to ban")
+    @discord.app_commands.describe(reason="Why do you want to ban this member?")
+    async def ban(self, interaction: discord.Interaction, user: discord.Member, *, reason: str = None):
+            if not interaction.guild.me.guild_permissions.ban_members:
+                embed = discord.Embed(
+                    title="Permission Denied",
+                    color=0xff0000
+                ).add_field(
+                    name="Error",
+                    value="I do not have permission to ban members.",
+                    inline=True
+                )
+                return await interaction.response.send_message(embed=embed, ephemeral=True)
 
-            if user == ctx.author:
-                await ctx.reply("You cannot ban yourself")
-                return
+            # Check if the user has the permission to ban members
+            if not interaction.user.guild_permissions.ban_members:
+                embed = discord.Embed(
+                    title="Permission Denied",
+                    color=0xff0000
+                ).add_field(
+                    name="Error",
+                    value="You do not have permission to use this command.",
+                    inline=True
+                )
+                return await interaction.response.send_message(embed=embed, ephemeral=True)
 
             if reason == None:
                 reason = "none"
             await user.ban(reason=reason)
             embed = discord.Embed(
             title="💥 User has been banned!", color=0x00d9ff)
-            embed.set_author(name=ctx.author, icon_url=ctx.author.avatar_url)
+            embed.set_author(name=interaction.author, icon_url=interaction.author.avatar_url)
             embed.add_field(name="User:", value=user.mention, inline=True)
             embed.add_field(name="Banned by: ",
-            value=ctx.author.mention, inline=True)
+            value=interaction.author.mention, inline=True)
             embed.add_field(name="Reason: ", value=reason, inline=True)
-            await ctx.send(embed=embed)
+            await interaction.send(embed=embed)
             try:
-                await user.send(f"You have been banned from {ctx.guild.name} Reason: " + reason)
+                await user.send(f"You have been banned from {interaction.guild.name} Reason: " + reason)
             except Exception as e:
                 print(e)
-        except Exception as e:
-            embed = discord.Embed(title=":x: Command Error",
-            colour=0x992D22)  # Dark Red
-            embed.add_field(name="Error", value=e)
-            embed.add_field(name="Guild", value=ctx.guild)
-            embed.add_field(name="Channel", value=ctx.channel)
-            embed.add_field(name="User", value=ctx.author)
-            embed.timestamp = datetime.datetime.utcnow()
-            await ctx.reply(embed=embed)
-
 
 def setup(bot):
     bot.add_cog(ban(bot))

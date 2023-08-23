@@ -1,33 +1,16 @@
-from discord.ext import commands
 import discord
-import discord_slash
-from discord_slash import SlashCommand, SlashContext
-from discord_slash.utils.manage_commands import create_choice, create_option
-from discord.ext.tasks import loop
-from discord_slash import cog_ext
-import datetime
+from discord import app_commands
+from discord.ext import commands
 
-
-class avatar(commands.Cog):
+class Avatar(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name='avatar')
-    @commands.guild_only()
-    async def avatar(self, ctx, member: discord.Member):
-        try:
-            embed = discord.Embed(description="Here is the avatar", color=0x00efdb)
-            embed.set_image(url=member.avatar_url)
-            await ctx.reply(embed=embed, mention_author=False)
-        except Exception as e:
-            embed = discord.Embed(title=":x: Command Error",
-            colour=0x992D22)  # Dark Red
-            embed.add_field(name="Error", value=e)
-            embed.add_field(name="Guild", value=ctx.guild)
-            embed.add_field(name="Channel", value=ctx.channel)
-            embed.add_field(name="User", value=ctx.author)
-            embed.timestamp = datetime.datetime.utcnow()
-            await ctx.reply(embed=embed)
+    @app_commands.command(name='admin_help', description="Get admin commands help")
+    async def admin_help(self, interaction):
+        embed = discord.Embed(title=f"Test", color=0x00EFDB)
+        embed.set_image(url=interaction.user.avatar)
+        await interaction.response.send_message(embed=embed)
 
-def setup(bot):
-    bot.add_cog(avatar(bot))
+async def setup(bot):
+    await bot.add_cog(Avatar(bot))
