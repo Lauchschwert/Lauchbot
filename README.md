@@ -67,7 +67,7 @@
     <li>Now you need to install pm2, so your bot autostarts even after your linux Server restarts. To install pm2 follow this <a href="https://pm2.io/docs/runtime/guide/installation/">guide</a></li>
     <li>After you installed python and pm2, go to the folder-directory you named your bot (in my case Lauchbot): "cd YourFolderName"</li>
     <li>Then type: "pip3 install -r requirements.txt"</li>
-    <li>After the packages are installed type: "pm2 start main.py"</li>
+    <li>After the packages are installed type: "pm2 start main.py --interpreter python3"</li>
     <li>If you did everything right you'll notice that your bot started, Congrats!</li>
     <li>You can also test the autostart just by restarting your linux server.</li>
  </ol>
