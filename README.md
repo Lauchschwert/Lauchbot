@@ -55,3 +55,20 @@
   <li>Last but not least: Run python main.py
 </ol>
 </details>
+
+<details>
+<summary>Linux Rootserver-setup</summary>
+ <ol>
+    <li>Open your FTP application you use for your server and connect to your rootserver.</li>
+    <li>Go to your root location in your server and drag the Lauchbot folder with all the files (except Readme.md, .gitignore and temp_main) into it</li>
+    <li>Connect to your server via your SSH Client</li>
+    <li>Go to your root directory (or type: "cd root")</li>
+    <li>You need to install python to your server. To install python type: "wget https://bootstrap.pypa.io/get-pip.py" and after that command use: "python3 ./get-pip.py"</li>
+    <li>Now you need to install pm2, so your bot autostarts even after your linux Server restarts. To install pm2 follow this <a href="https://pm2.io/docs/runtime/guide/installation/">guide</a></li>
+    <li>After you installed python and pm2, go to the folder-directory you named your bot (in my case Lauchbot): "cd YourFolderName"</li>
+    <li>Then type: "pip3 install -r requirements.txt"</li>
+    <li>After the packages are installed type: "pm2 start main.py"</li>
+    <li>If you did everything right you'll notice that your bot started, Congrats!</li>
+    <li>You can also test the autostart just by restarting your linux server.</li>
+ </ol>
+</details>
