@@ -19,5 +19,5 @@ class help(commands.Cog):
         await interaction.response.send_message(embed=embed, ephemeral=True)
         await asyncio.sleep(1000)
 
-def setup(bot):
-    bot.add_cog(help(bot))
+async def setup(bot):
+    await bot.add_cog(help(bot))

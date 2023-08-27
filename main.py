@@ -1,13 +1,10 @@
-import asyncio
 import os
-import platform
 import sys
 import json
 from datetime import datetime
 from urllib.parse import quote
-
+from discord.ext import commands
 import discord
-from discord.ext import commands, tasks
 
 sys.dont_write_bytecode = True
 
@@ -34,7 +31,7 @@ intents.presences = True
 intents.members = True
 
 
-with open('config.json') as config_file:
+with open('example_config.json') as config_file:
     config = json.load(config_file)
     token = config.get('token')
 

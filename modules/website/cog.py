@@ -12,5 +12,5 @@ class website(commands.Cog):
     async def website(self, interaction: discord.Interaction):
         await interaction.response.send_message("My Website => https://www.lauchschwert.xyz")
 
-def setup(bot):
-    bot.add_cog(website(bot))
+async def setup(bot):
+    await bot.add_cog(website(bot))

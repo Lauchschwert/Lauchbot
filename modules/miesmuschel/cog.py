@@ -50,5 +50,5 @@ class miesmuschel(commands.Cog):
         ]
         await interaction.response.send_message(random.choice(answers))
 
-def setup(bot):
-    bot.add_cog(miesmuschel(bot))
+async def setup(bot):
+    await bot.add_cog(miesmuschel(bot))

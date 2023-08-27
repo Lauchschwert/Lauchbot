@@ -15,5 +15,5 @@ class reverse(commands.Cog):
     async def reverse(self, interaction: discord.Interaction, text):
         await interaction.response.send_message(text[::-1])
 
-def setup(bot):
-    bot.add_cog(reverse(bot))
+async def setup(bot):
+   await bot.add_cog(reverse(bot))

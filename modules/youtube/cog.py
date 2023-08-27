@@ -12,5 +12,5 @@ class youtube(commands.Cog):
     async def youtube(self, interaction: discord.Interaction):
         await interaction.response.send_message("https://www.youtube.com/channel/UCn71e_JrhNVYbvETHl4MNJw")
 
-def setup(bot):
-    bot.add_cog(youtube(bot))
+async def setup(bot):
+    await bot.add_cog(youtube(bot))

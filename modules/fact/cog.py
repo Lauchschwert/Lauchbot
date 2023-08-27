@@ -17,5 +17,5 @@ class fact(commands.Cog):
         await interaction.response.send_message("Here is a random and useless fact: " + value)
 
 
-def setup(bot):
-    bot.add_cog(fact(bot))
+async def setup(bot):
+    await bot.add_cog(fact(bot))

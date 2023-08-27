@@ -21,5 +21,5 @@ class short(commands.Cog):
         await interaction.response.send_message(f"Your short-link is: {f}")
 
 
-def setup(bot):
-    bot.add_cog(short(bot))
+async def setup(bot):
+    await bot.add_cog(short(bot))

@@ -17,5 +17,5 @@ class ping(commands.Cog):
 
 
 
-def setup(bot):
-    bot.add_cog(ping(bot))
+async def setup(bot):
+    await bot.add_cog(ping(bot))

@@ -28,5 +28,5 @@ class kick(commands.Cog):
         await interaction.guild.kick(member)
         await interaction.response.send_message(f"{member} has been kicked!")
 
-def setup(bot):
-    bot.add_cog(kick(bot))
+async def setup(bot):
+    await bot.add_cog(kick(bot))

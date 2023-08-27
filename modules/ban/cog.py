@@ -49,5 +49,5 @@ class ban(commands.Cog):
             except Exception as e:
                 print(e)
 
-def setup(bot):
-    bot.add_cog(ban(bot))
+async def setup(bot):
+    await bot.add_cog(ban(bot))

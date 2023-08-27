@@ -1,6 +1,5 @@
 from discord.ext import commands
 import discord
-import discord_slash
 from discord.ext.tasks import loop
 import datetime
 import asyncio
@@ -32,5 +31,5 @@ class userinfo(commands.Cog):
 
 
 
-def setup(bot):
-    bot.add_cog(userinfo(bot))
+async def setup(bot):
+    await bot.add_cog(userinfo(bot))

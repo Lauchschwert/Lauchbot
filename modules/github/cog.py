@@ -15,5 +15,5 @@ class github(commands.Cog):
         await interaction.send("https://www.github.com/anditv21")
 
 
-def setup(bot):
-    bot.add_cog(github(bot))
+async def setup(bot):
+    await bot.add_cog(github(bot))

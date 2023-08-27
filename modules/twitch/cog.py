@@ -13,5 +13,5 @@ class twitch(commands.Cog):
     async def twitch(self, interaction: discord.Interaction):
             await interaction.response.send_message("https://www.twitch.tv/Lauchschwert")
 
-def setup(bot):
-    bot.add_cog(twitch(bot))
+async def setup(bot):
+    await bot.add_cog(twitch(bot))

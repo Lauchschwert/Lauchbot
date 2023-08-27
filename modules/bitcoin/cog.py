@@ -16,5 +16,5 @@ class bitcoin(commands.Cog):
         await interaction.response.send_message("Current Bitcoin Price is: $" + value)
 
 
-def setup(bot):
-    bot.add_cog(bitcoin(bot))
+async def setup(bot):
+    await bot.add_cog(bitcoin(bot))
