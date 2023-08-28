@@ -2,7 +2,6 @@ from discord.ext import commands
 from discord.ext.tasks import loop
 import requests
 import discord
-import datetime
 
 
 class fact(commands.Cog):
@@ -14,7 +13,7 @@ class fact(commands.Cog):
         url = "https://uselessfacts.jsph.pl/random.json?language=en"
         response = requests.get(url)
         value = response.json()["text"]
-        await interaction.response.send_message("Here is a random and useless fact: " + value)
+        await interaction.response.send("Here is a random and useless fact: " + value)
 
 
 async def setup(bot):

@@ -2,12 +2,12 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
+
 class ban(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
     @app_commands.command(name="ban", description="Ban someone")
-    @discord.app_commands.describe(member="The member you want to ban")
     @discord.app_commands.describe(reason="Why do you want to ban this member?")
     async def ban(self, interaction: discord.Interaction, user: discord.Member, *, reason: str = None):
             if not interaction.guild.me.guild_permissions.ban_members:

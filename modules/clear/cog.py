@@ -3,7 +3,6 @@ from discord import app_commands
 from discord.ext import commands
 import requests
 import asyncio
-from asyncio import datetime
 
 
 class clear(commands.Cog):
@@ -24,7 +23,6 @@ class clear(commands.Cog):
             embed.add_field(name="Guild", value=interaction.guild)
             embed.add_field(name="Channel", value=interaction.channel)
             embed.add_field(name="User", value=interaction.author)
-            embed.timestamp = datetime.datetime.utcnow()
             await interaction.response.send_message(embed=embed)         
 
 
