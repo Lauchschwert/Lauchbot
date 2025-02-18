@@ -14,27 +14,26 @@ class Bot(commands.Bot):
         super().__init__(command_prefix=commands.when_mentioned_or(">>>"), intents=intents)
 
     async def setup_hook(self):
-        for filepath in os.listdir('modules'):
-            for filename in os.listdir(f'modules/{filepath}'):
+        for folder in os.listdir('modules'):
+            for filename in os.listdir(f'modules/{folder}'):
                 if filename.endswith('.py'):
                     filename = filename.replace('.py', '')
                     try:
-                        await bot.load_extension(f'modules.{filepath}.{filename}')
-                        print(f'Loaded modules.{filepath}.{filename}')
+                        await bot.load_extension(f'modules.{folder}.{filename}')
+                        print(f'Loaded modules.{folder}.{filename}')
                     except Exception as error:
-                        print(f'Failed to load modules.{filepath}.{filename}: {error}')
+                        print(f'Failed to load modules.{folder}.{filename}: {error}')
 
         await self.tree.sync()
+
 
 intents = discord.Intents.all()
 intents.presences = True
 intents.members = True
 
-
-with open('example_config.json') as config_file:
+with open('bot_config.json') as config_file:
     config = json.load(config_file)
     token = config.get('token')
-
 
 if not token:
     print("Error: Bot token not found in config.json.")
@@ -43,10 +42,12 @@ if not token:
 bot = Bot(intents=intents)
 bot.remove_command("help")
 
+
 @bot.event
 async def on_ready():
     print(f"{bot.user.name} has connected to Discord.")
     activity = discord.Activity(type=discord.ActivityType.watching, name="Jojo's bizarre adventure")
     await bot.change_presence(status=discord.Status.dnd, activity=activity)
+
 
 bot.run(token=token, log_level=40)
