@@ -14,12 +14,13 @@ class Bot(commands.Bot):
         super().__init__(command_prefix=commands.when_mentioned_or(">>>"), intents=intents)
 
     async def setup_hook(self):
-        for folder in os.listdir('modules'):
-            for filename in os.listdir(f'modules/{folder}'):
+        modules_dir = "../modules"
+        for folder in os.listdir(modules_dir):
+            for filename in os.listdir(os.path.join(modules_dir, folder)):
                 if filename.endswith('.py'):
                     filename = filename.replace('.py', '')
                     try:
-                        await bot.load_extension(f'modules.{folder}.{filename}')
+                        await bot.load_extension(f'{modules_dir}.{folder}.{filename}')
                         print(f'Loaded modules.{folder}.{filename}')
                     except Exception as error:
                         print(f'Failed to load modules.{folder}.{filename}: {error}')
@@ -31,7 +32,7 @@ intents = discord.Intents.all()
 intents.presences = True
 intents.members = True
 
-with open('bot_config.json') as config_file:
+with open('../bot_config.json') as config_file:
     config = json.load(config_file)
     token = config.get('token')
 
